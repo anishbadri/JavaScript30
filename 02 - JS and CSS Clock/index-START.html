@@ -64,7 +64,7 @@
       top: 50%;
       transform-origin: 100%;
       transform: rotate(90deg);
-
+      
     }
 
   </style>
@@ -72,13 +72,20 @@
   <script>
     const secondHand = document.getElementsByClassName('second-hand');
     const hourHand = document.querySelector('.hour-hand');
+    const minuteHand = document.querySelector('.min-hand')
     function runClock(){
       const currentdate = new Date();
       const second = currentdate.getSeconds();
       const hours = currentdate.getHours();
+      const minutes = currentdate.getMinutes();
       
       secondRotate  = (second/60)*360 +90;
+      minuteRotate = (minutes*6)+90 + (second*.1);
+      hourRotate = ((hours%12)*30)+90 + (minutes*.5);
+
       secondHand[0].style.transform = `rotate(${secondRotate}deg)`;
+      minuteHand.style.transform = `rotate(${minuteRotate}deg)`;
+      hourHand.style.transform = `rotate(${hourRotate}deg)`;
       console.log(hours);
     }
     setInterval(runClock, 1000);
