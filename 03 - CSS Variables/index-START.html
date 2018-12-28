@@ -25,6 +25,11 @@
     /*
       misc styles, nothing to do with CSS variables
     */
+    :root {
+      --base: #ffc600;
+      --spacing: 10px;
+      --blur: 5px;
+    }
 
     body {
       text-align: center;
@@ -45,6 +50,18 @@
   </style>
 
   <script>
+
+    const spacing = document.querySelectorAll(".controls input")
+    // spacing.addEventListener("change",function(e){
+    //   console.log(this.value);
+    // });
+    spacing.forEach(control => control.addEventListener("change", function(){
+      console.log(this.value)
+      
+    }));
+    spacing.forEach(control => control.addEventListener("mousemove", function(){
+      console.log(this.value)
+    }));
   </script>
 
 </body>
