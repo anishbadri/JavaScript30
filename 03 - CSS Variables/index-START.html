@@ -31,6 +31,17 @@
       --blur: 5px;
     }
 
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+
+    h1 {
+      color: var(--base);
+    }
+
     body {
       text-align: center;
       background: #193549;
@@ -50,18 +61,28 @@
   </style>
 
   <script>
+    function updateInput() {
+      const sizing = this.dataset.sizing || "";
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + sizing);
+      // console.log(this);
+    }
+    const change = document.querySelectorAll(".controls input")
+    change.forEach(input => input.addEventListener("change", updateInput))
+    change.forEach(input => input.addEventListener("mousemove", updateInput))
 
-    const spacing = document.querySelectorAll(".controls input")
-    // spacing.addEventListener("change",function(e){
-    //   console.log(this.value);
-    // });
-    spacing.forEach(control => control.addEventListener("change", function(){
-      console.log(this.value)
+
+
+    // const spacing = document.querySelectorAll(".controls input")
+    // // spacing.addEventListener("change",function(e){
+    // //   console.log(this.value);
+    // // });
+    // spacing.forEach(control => control.addEventListener("change", function(){
+    //   console.log(this.value)
       
-    }));
-    spacing.forEach(control => control.addEventListener("mousemove", function(){
-      console.log(this.value)
-    }));
+    // }));
+    // spacing.forEach(control => control.addEventListener("mousemove", function(){
+    //   console.log(this.value)
+    // }));
   </script>
 
 </body>
